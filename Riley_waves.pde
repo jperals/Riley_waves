@@ -4,8 +4,8 @@ int amplitude = 25;
 // Number of wave phases that are visible on screen
 // (in other words, number of peaks or number of troughs)
 float nPhases = 4.3;
-int initialX;
-int initialY;
+float initialX;
+float initialY;
 color curvePrimaryColor = color(100, 150, 200);
 
 // Number of waves will be calculated according to window height, waveWidth and waveSeparation
@@ -29,10 +29,10 @@ void draw() {
   background(255);
   for(int i = -nWaves/2; i <= nWaves; i++) {
     float inclination = PI*sin(0.05*i + inclinationOffset);
-    int waveOffsetX = (int)(waveWidth * cos(inclination));
-    int offsetX = waveOffsetX + (int)(waveSeparation * cos(inclination));
-    int x = initialX;
-    int y = initialY;
+    float waveOffsetX = waveWidth * cos(inclination);
+    float offsetX = waveOffsetX + waveSeparation * cos(inclination);
+    float x = initialX;
+    float y = initialY;
     beginShape();
     vertex(x, y);
     // First curveVertex is just to guide the beginning of the curve
