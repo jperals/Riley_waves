@@ -1,14 +1,17 @@
-int nWaves;
-// Number of wave phases that are visible on screen
-// (in other words, number of up peaks or down peaks)
-float nPhases = 4.3;
-int phaseLength;
-int amplitude = 20;
-float inclination = -1;
 int waveWidth = 15;
 int waveSeparation = 15;
-int initialX = 0, initialY = -amplitude/2;
+int amplitude = 20;
+// Number of wave phases that are visible on screen
+// (in other words, number of peaks or number of troughs)
+float nPhases = 4.3;
+int initialX = 0;
+int initialY = -amplitude/2;
 color curvePrimaryColor = color(100, 150, 200);
+
+// Number of waves will be calculated according to window height, waveWidth and waveSeparation
+int nWaves;
+// Phase length will be calculated according to window width and number of phases
+int phaseLength;
 
 void setup() {
   size(600, 600);
@@ -21,7 +24,7 @@ void setup() {
 
 void draw() {
   for(int i = 0; i <= nWaves; i++) {
-    inclination = -2*PI*atan(0.4*(i - nWaves/2));
+    float inclination = -2*PI*atan(0.4*(i - nWaves/2));
     int waveOffsetX = (int)(waveWidth * sin(inclination));
     int offsetX = waveOffsetX + (int)(waveSeparation * sin(inclination));
     int x = initialX;
