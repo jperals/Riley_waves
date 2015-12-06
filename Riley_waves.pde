@@ -5,10 +5,10 @@ float nPhases = 4.3;
 int phaseLength;
 int amplitude = 20;
 float inclination = -1;
-int waveWidth = 20;
-int waveSeparation = 20;
-int initialX = 0, initialY = 0;
-color curvePrimaryColor = color(100, 200, 200);
+int waveWidth = 15;
+int waveSeparation = 15;
+int initialX = 0, initialY = -amplitude/2;
+color curvePrimaryColor = color(100, 150, 200);
 
 void setup() {
   size(600, 600);
@@ -21,11 +21,11 @@ void setup() {
 
 void draw() {
   for(int i = 0; i <= nWaves; i++) {
-    inclination = -PI*atan(0.2*(i - nWaves/2));
+    inclination = -2*PI*atan(0.4*(i - nWaves/2));
     int waveOffsetX = (int)(waveWidth * sin(inclination));
     int offsetX = waveOffsetX + (int)(waveSeparation * sin(inclination));
     int x = initialX;
-    int y = initialY - amplitude;
+    int y = initialY;
     beginShape();
     vertex(x, y);
     // First curveVertex is just to guide the beginning of the curve
