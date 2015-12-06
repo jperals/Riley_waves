@@ -24,9 +24,9 @@ void setup() {
 
 void draw() {
   for(int i = 0; i <= nWaves; i++) {
-    float inclination = -2*PI*atan(0.4*(i - nWaves/2));
-    int waveOffsetX = (int)(waveWidth * sin(inclination));
-    int offsetX = waveOffsetX + (int)(waveSeparation * sin(inclination));
+    float inclination = PI*sin(0.2*(i - nWaves/2));
+    int waveOffsetX = (int)(waveWidth * cos(inclination));
+    int offsetX = waveOffsetX + (int)(waveSeparation * cos(inclination));
     int x = initialX;
     int y = initialY;
     beginShape();
