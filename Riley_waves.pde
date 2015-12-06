@@ -30,7 +30,7 @@ void draw() {
     // First curveVertex is just to guide the beginning of the curve
     curveVertex(x - phaseLength / 2, y + amplitude);
     curveVertex(x, y);
-    for(int j = 0; j <= nPhases; j++) {
+    while(x <= width + phaseLength + waveOffsetX) {
       x += phaseLength / 2;
       y += amplitude;
       curveVertex(x, y);
@@ -48,7 +48,7 @@ void draw() {
     // First curveVertex is just to guide the beginning of the curve
     curveVertex(x + phaseLength / 2, y + amplitude);
     curveVertex(x, y);
-    for(int j = (int)nPhases; j >= 0; j--) {
+    while(x > 0) {
       x -= phaseLength / 2;
       y += amplitude;
       curveVertex(x, y);
@@ -61,6 +61,9 @@ void draw() {
     vertex(x, y);
     endShape();
     initialX += offsetX;
+    while(initialX + offsetX > 0) {
+      initialX -= phaseLength;
+    }
     initialY += waveWidth + waveSeparation; //<>//
   }
 }
