@@ -35,8 +35,8 @@ void draw() {
   initialY = -amplitude/2;
   background(255);
   for(int i = 0; i <= nWaves; i++) {
-    float inclination = PI*sin(0.2*i + inclinationOffset);
-    float waveOffsetX = waveWidth * cos(inclination);
+    float inclination = PI*0.2*i + inclinationOffset;
+    float waveOffsetX = 1.5 * waveWidth * cos(inclination);
     float offsetX = waveOffsetX + waveSeparation * cos(inclination);
     float x = initialX;
     float y = initialY;
@@ -72,7 +72,7 @@ void draw() {
       y -= amplitude;
       curveVertex(x, y);
     }
-    // Last curveVertex is just to guide the end of the curve //<>//
+    // Last curveVertex is just to guide the end of the curve //<>// //<>//
     curveVertex(x - phaseLength / 2, y + amplitude);
     vertex(x, y);
     endShape();
@@ -95,11 +95,11 @@ void draw() {
     r += dr;
     g += dg;
     b += db;
-    r = constrain(r, 0, 255);
-    g = constrain(g, 0, 255);
-    b = constrain(b, 0, 255);
+    r = round(constrain(r, 63, 200));
+    g = round(constrain(g, 63, 200));
+    b = round(constrain(b, 63, 200));
     r = constrain(r, g - 50, g + 50);
     g = constrain(r, b - 50, b + 50);
-    colors[i] = color(round(r), round(g), round(b));
+    colors[i] = color(r, g, b);
   }
 }
